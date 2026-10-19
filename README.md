@@ -60,8 +60,8 @@ The raw dataset was normalized and restructured in **Power Query** into an indus
 
 ## Key DAX Measures
 
-1. Sales Volume & Basket Metrics
 ```dax
+1. Sales Volume & Basket Metrics
 Total Sales = SUM(Fact_Orders[Sales])
 Total Orders = DISTINCTCOUNT(Fact_Orders[Order ID])
 Avg Order Value = 
