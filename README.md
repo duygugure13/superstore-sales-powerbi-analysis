@@ -1,10 +1,10 @@
-# 📊 Retail Sales & Logistics Performance Dashboard (Power BI)
+# Retail Sales & Logistics Performance Dashboard (Power BI)
 
 An end-to-end Business Intelligence solution built with Power BI using retail sales data. This project showcases Star Schema relational data modeling, dynamic DAX measures (Time Intelligence, Iterators, Role-Playing Relationships), and interactive multi-page reporting tailored for executive decision-making.
 
 ---
 
-## 🎯 Executive Summary & Objectives
+## Executive Summary & Objectives
 The primary objective of this project is to analyze commercial and logistics performance across multiple business dimensions:
 * **Revenue Dynamics:** Tracking sales performance against historical baselines using dynamic Time Intelligence (YoY Growth & SPLY).
 * **Product Portfolio:** Analyzing revenue contributions across categories and sub-categories to isolate high-performing drivers.
@@ -12,7 +12,7 @@ The primary objective of this project is to analyze commercial and logistics per
 
 ---
 
-## 🏗️ Data Architecture & Star Schema
+## Data Architecture & Star Schema
 The raw dataset was normalized and restructured in **Power Query** into an industry-standard **Star Schema** to ensure high data compression, optimal DAX engine performance, and unidirectional filter flow.
 
 ![Star Schema Data Model](images/star-schema.png)
@@ -27,7 +27,7 @@ The raw dataset was normalized and restructured in **Power Query** into an indus
 
 ---
 
-## 📈 Dashboard Architecture & Key Insights
+## Dashboard Architecture & Key Insights
 
 ### 1. Sales Overview (Executive Page)
 ![Sales Overview](images/sales-overview.png)
@@ -58,7 +58,7 @@ The raw dataset was normalized and restructured in **Power Query** into an indus
 
 ---
 
-## 📐 Key DAX Measures
+## Key DAX Measures
 
 ### 1. Sales Volume & Basket Metrics
 ```dax
@@ -66,6 +66,8 @@ Total Sales = SUM(Fact_Orders[Sales])
 Total Orders = DISTINCTCOUNT(Fact_Orders[Order ID])
 Avg Order Value = 
 DIVIDE([Total Sales], [Total Orders], 0)
+
+2. Time Intelligence (YoY & SPLY)
 Sales SPLY = 
 CALCULATE(
     [Total Sales],
@@ -75,6 +77,8 @@ YoY Sales Growth % =
 VAR SalesLY = [Sales SPLY]
 RETURN
     DIVIDE([Total Sales] - SalesLY, SalesLY, 0)
+
+3. Logistics & Role-Playing Dimensions
 Avg Shipping Days = 
 VAR TotalShippingTime = 
     SUMX(
@@ -89,3 +93,10 @@ CALCULATE(
     [Total Sales],
     USERELATIONSHIP(Dim_Date[Date], Fact_Orders[Ship Date])
 )
+
+Tech Stack & Methodology
+Power BI Desktop: Star Schema modeling, report canvas design, synced slicers, visual formatting.
+
+DAX: Variables (VAR/RETURN), Iterator functions (SUMX), Role-playing inactive relationships (USERELATIONSHIP), Time Intelligence (SAMEPERIODLASTYEAR).
+
+Power Query (M): Normalization, data type transformation using Locale (en-US Decimal), surrogate key management, deduplication.
