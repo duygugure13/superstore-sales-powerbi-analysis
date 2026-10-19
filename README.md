@@ -95,9 +95,4 @@ CALCULATE(
 )
 
 ```
-Tech Stack & Methodology
-Power BI Desktop: Star Schema modeling, report canvas design, synced slicers, visual formatting.
 
-DAX: Variables (VAR/RETURN), Iterator functions (SUMX), Role-playing inactive relationships (USERELATIONSHIP), Time Intelligence (SAMEPERIODLASTYEAR).
-
-Power Query (M): Normalization, data type transformation using Locale (en-US Decimal), surrogate key management, deduplication.
